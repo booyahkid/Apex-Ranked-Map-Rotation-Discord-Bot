@@ -105,12 +105,12 @@ def get_map(map_name: str) -> dict:
     return MAP_DATA.get(map_name, FALLBACK_MAP)
 
 
-def duration_bar(end_ts: int, total_minutes: int = 90) -> str:
-    """Generate a visual progress bar showing how much time is left."""
-    now_ts     = int(datetime.now(timezone.utc).timestamp())
-    remaining  = max(0, end_ts - now_ts)
-    elapsed    = max(0, total_minutes * 60 - remaining)
-    progress   = min(1.0, elapsed / (total_minutes * 60))
+def duration_bar(start_ts: int, end_ts: int) -> str:
+    """Generate a visual progress bar based on actual start and end timestamps."""
+    now_ts    = int(datetime.now(timezone.utc).timestamp())
+    total     = max(1, end_ts - start_ts)
+    elapsed   = max(0, now_ts - start_ts)
+    progress  = min(1.0, elapsed / total)
 
     bar_length = 12
     filled     = round(progress * bar_length)
@@ -156,7 +156,7 @@ def build_currentmap_embed(map_name: str, next_map: str, end_timestamp: int, sta
     # Progress bar
     embed.add_field(
         name="⏳ Time Remaining",
-        value=f"{duration_bar(end_timestamp)}\nEnds <t:{end_timestamp}:R> at <t:{end_timestamp}:t>",
+        value=f"{duration_bar(start_timestamp, end_timestamp)}\nEnds <t:{end_timestamp}:R> at <t:{end_timestamp}:t>",
         inline=False,
     )
 
@@ -438,7 +438,7 @@ async def on_ready():
     print(f"[{now()}] 🤖 Logged in as {client.user}")
     print(f"[{now()}] ✅ Slash commands registered: /currentmap, /todaysmaps")
     print(f"[{now()}] 🔄 Polling every {CHECK_INTERVAL}s for ranked map changes...")
-    client.loop.create_task(ranked_map_loop())
+    # client.loop.create_task(ranked_map_loop())
 
 
 # ─── Entry point ───────────────────────────────────────────────────────────────
