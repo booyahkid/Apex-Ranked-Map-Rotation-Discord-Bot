@@ -42,37 +42,37 @@ MAP_DATA = {
         "color":       0xE8A237,
         "emoji":       "🏜️",
         "description": "The original Apex battleground. Tight corridors, canyon walls, and pure chaos.",
-        "image":       "https://media.contentapi.ea.com/content/dam/apex-legends/common/featured-media/kings-canyon/kings-canyon-keyart.jpg",
+        "image":       "https://drop-assets.ea.com/images/2106fDsHrzPvx15EpUCHSe/fff15d2bdc1d278fe8b762ec81db10f6/apex-media-maps-kings-canyon-xl-l-m1.jpg?im=AspectCrop=(1,1),xPosition=0.5,yPosition=0.5;Resize=(1280)&q=85",
     },
     "World's Edge": {
         "color":       0xE84A4A,
         "emoji":       "🌋",
         "description": "Volcanic terrain split by lava rifts. High ground and long sightlines dominate.",
-        "image":       "https://media.contentapi.ea.com/content/dam/apex-legends/common/featured-media/worlds-edge/worlds-edge-keyart.jpg",
+        "image":       "https://drop-assets.ea.com/images/4suIbEk14qVTpGEOh0Zt9Q/72c2062cd32f22447beff2b5ed4ed58f/apex-media-maps-worlds-edge-xl-l-m.jpg?im=AspectCrop=(1,1),xPosition=0.5,yPosition=0.5;Resize=(1280)&q=85",
     },
     "Olympus": {
         "color":       0x6AB0E8,
         "emoji":       "☁️",
         "description": "A floating city in the clouds. Open rotations reward fast, mobile legends.",
-        "image":       "https://media.contentapi.ea.com/content/dam/apex-legends/common/featured-media/olympus/olympus-keyart.jpg",
+        "image":       "https://drop-assets.ea.com/images/1nbiZcYKD5exXWgecxZWNf/8af1c5a04b16e7c4e169dd421ada34ad/Apex_Maps-Olympus-1x1.jpg?im=AspectCrop=(1,1),xPosition=0.5,yPosition=0.15625;Resize=(1280)&q=85",
     },
     "Storm Point": {
         "color":       0x4AE8A2,
         "emoji":       "⚡",
         "description": "Sprawling tropical island with IMC Armories and aggressive wildlife.",
-        "image":       "https://media.contentapi.ea.com/content/dam/apex-legends/common/featured-media/storm-point/storm-point-keyart.jpg",
+        "image":       "https://drop-assets.ea.com/images/1ZnzgvuwhHfVgbNGphL7OR/0e76b2875665ffc375f2d95e28dafd44/apex-media-maps-storm-point-xl-l-m.jpg?im=AspectCrop=(1,1),xPosition=0.5,yPosition=0.5;Resize=(1280)&q=85",
     },
     "Broken Moon": {
         "color":       0xA259E8,
         "emoji":       "🌙",
         "description": "A fractured moon with zipline networks connecting distant POIs.",
-        "image":       "https://media.contentapi.ea.com/content/dam/apex-legends/common/featured-media/broken-moon/broken-moon-keyart.jpg",
+        "image":       "https://drop-assets.ea.com/images/3L05Q850J60jdpnzaMqi6n/b6ab5093e5bff08a84327e929b4ca2e0/apex-media-maps-broken-moon-xl-l-m.jpg?im=AspectCrop=(1,1),xPosition=0.5,yPosition=0.5;Resize=(1280)&q=85",
     },
     "E-District": {
         "color":       0xFF6B9D,
         "emoji":       "🌆",
         "description": "A neon-lit urban sprawl. Vertical combat and dense cover everywhere.",
-        "image":       "https://media.contentapi.ea.com/content/dam/apex-legends/common/featured-media/e-district/e-district-keyart.jpg",
+        "image":       "https://drop-assets.ea.com/images/6NXmn5uRFXPffRFWd64YjD/808cd2ad017acdf363b16274357d11df/apex-media-maps-e-district-xl.jpg?im=AspectCrop=(1,1),xPosition=0.5,yPosition=0.5;Resize=(1280)&q=85",
     },
 }
 
@@ -152,7 +152,9 @@ def build_currentmap_embed(map_name: str, next_map: str, end_timestamp: int, sta
     )
 
     embed.title = f"{emoji}  {map_name}"
-    embed.description = f"*{desc}*"
+
+    # Spacer
+    embed.add_field(name="\u200b", value="\u200b", inline=False)
 
     # Progress bar
     embed.add_field(
@@ -161,19 +163,24 @@ def build_currentmap_embed(map_name: str, next_map: str, end_timestamp: int, sta
         inline=False,
     )
 
-    # Next map
+    # Spacer
+    embed.add_field(name="\u200b", value="\u200b", inline=False)
+
+    # Next map + status side by side
     embed.add_field(
         name="🔜 Up Next",
         value=f"{next_meta['emoji']}  **{next_map}**",
         inline=True,
     )
 
-    # Live indicator
     embed.add_field(
         name="📡 Status",
         value="🟢  **LIVE NOW**",
         inline=True,
     )
+
+    # Spacer
+    embed.add_field(name="\u200b", value="\u200b", inline=False)
 
     # Map image as thumbnail
     if meta.get("image"):
@@ -227,7 +234,7 @@ def build_todays_schedule_embed(ranked_rotations: list) -> discord.Embed:
             number = f"`{i + 1}.`"
             line = (
                 f"{number} {emoji}  **{map_name}**\n"
-                f"　<t:{start_ts}:t> → <t:{end_ts}:t>"
+                f"　<t:{start_ts}:t> → <t:{end_ts}:t>\n"
             )
 
         lines.append((line, is_active))
@@ -242,6 +249,7 @@ def build_todays_schedule_embed(ranked_rotations: list) -> discord.Embed:
             value="\n".join(active_lines),
             inline=False,
         )
+        embed.add_field(name="\u200b", value="\u200b", inline=False)
 
     if upcoming_lines:
         # Split into chunks if needed (Discord field limit 1024 chars)
