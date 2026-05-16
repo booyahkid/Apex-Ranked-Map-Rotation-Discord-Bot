@@ -292,7 +292,7 @@ async def on_ready():
     print(f"[{now()}] 🤖 Logged in as {client.user}")
     print(f"[{now()}] ✅ Slash commands registered: /currentmap, /todaysmaps")
     print(f"[{now()}] 🔄 Polling every {CHECK_INTERVAL}s for ranked map changes...")
-    client.loop.create_task(ranked_map_loop())
+    #client.loop.create_task(ranked_map_loop())
 
 
 # ─── Entry point ───────────────────────────────────────────────────────────────
