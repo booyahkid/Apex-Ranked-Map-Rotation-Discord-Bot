@@ -174,6 +174,9 @@ def build_currentmap_embed(map_name: str, next_map: str, end_timestamp: int, sta
     )
 
 
+    if meta.get("image"):
+        embed.set_image(url=meta["image"])
+
     embed.set_footer(
         text="🏆 Ranked  •  Apex Map Tracker  •  Updates every 60s",
     )
