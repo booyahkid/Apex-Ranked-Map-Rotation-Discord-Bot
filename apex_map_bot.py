@@ -173,9 +173,6 @@ def build_currentmap_embed(map_name: str, next_map: str, end_timestamp: int, sta
         inline=True,
     )
 
-    # Map image as thumbnail
-    if meta.get("image"):
-        embed.set_image(url=meta["image"])
 
     embed.set_footer(
         text="🏆 Ranked  •  Apex Map Tracker  •  Updates every 60s",
@@ -188,7 +185,7 @@ def build_todays_schedule_embed(ranked_rotations: list) -> discord.Embed:
     now_ts = int(datetime.now(timezone.utc).timestamp())
 
     embed = discord.Embed(
-        title="📅  Ranked Map Schedule",
+        title="Ranked Map Schedule",
         color=RANK_GRADIENT,
         timestamp=datetime.now(timezone.utc),
     )
@@ -251,7 +248,7 @@ def build_todays_schedule_embed(ranked_rotations: list) -> discord.Embed:
                 embed.add_field(name=label, value=chunk.strip(), inline=False)
                 chunk = ""
                 field_count += 1
-            chunk += line + "\n\n"
+            chunk += line + "\n"
 
         if chunk:
             label = "🗓️ Coming Up" if field_count == 0 else "🗓️ Coming Up (cont.)"
