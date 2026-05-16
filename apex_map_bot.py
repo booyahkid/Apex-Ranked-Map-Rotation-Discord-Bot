@@ -42,37 +42,37 @@ MAP_DATA = {
         "color":       0xE8A237,
         "emoji":       "🏜️",
         "description": "The original Apex battleground. Tight corridors, canyon walls, and pure chaos.",
-        "image":       "https://wallpapercave.com/wp/wp4413079.jpg",
+        "image":       "https://i.imgur.com/JfswG7i.jpeg",
     },
     "World's Edge": {
         "color":       0xE84A4A,
         "emoji":       "🌋",
         "description": "Volcanic terrain split by lava rifts. High ground and long sightlines dominate.",
-        "image":       "https://wallpapercave.com/wp/wp11307860.jpg",
+        "image":       "https://i.imgur.com/oPp39Go.jpeg",
     },
     "Olympus": {
         "color":       0x6AB0E8,
         "emoji":       "☁️",
         "description": "A floating city in the clouds. Open rotations reward fast, mobile legends.",
-        "image":       "https://wallpapercave.com/wp/wp11307899.jpg",
+        "image":       "https://i.imgur.com/N8OuYlZ.jpeg",
     },
     "Storm Point": {
         "color":       0x4AE8A2,
         "emoji":       "⚡",
         "description": "Sprawling tropical island with IMC Armories and aggressive wildlife.",
-        "image":       "https://wallpapercave.com/wp/wp11307854.jpg",
+        "image":       "https://i.imgur.com/TSo5PVH.jpeg",
     },
     "Broken Moon": {
         "color":       0xA259E8,
         "emoji":       "🌙",
         "description": "A fractured moon with zipline networks connecting distant POIs.",
-        "image":       "https://www.videogameschronicle.com/files/2022/10/Broken-Moon-Loading-Screen.jpg",
+        "image":       "https://i.imgur.com/GdDRpnz.jpeg",
     },
     "E-District": {
         "color":       0xFF6B9D,
         "emoji":       "🌆",
         "description": "A neon-lit urban sprawl. Vertical combat and dense cover everywhere.",
-        "image":       "https://media.esports.gg/uploads/2025/07/E-District-Season-26-1080p.jpg",
+        "image":       "https://i.imgur.com/mpsvIRl.jpeg",
     },
 }
 
