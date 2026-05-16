@@ -1,7 +1,3 @@
-[build]
-builder = "nixpacks"
- 
 [deploy]
-startCommand = "python apex_map_bot.py"
 restartPolicyType = "always"
- 
+
